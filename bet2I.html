@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Sportifs IG2I</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .match {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            max-width: 600px;
+        }
+        .team {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .team img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #007BFF;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Paris Sportifs - IG2I</h1>
+    <div id="matches"></div>
+    
+    <script>
+      const matches = [
+{ equipe1: "Gaetan ", equipe2: " Kilian", cote1: 2.1, cote2: 2.8, img1: "gaetan.png", img2: "kilian.png" },
+{ equipe1: "Valentin ", equipe2: " Martin", cote1: 2.0, cote2: 1.5, img1: "valentin.png", img2: "martin.png" }
+];
+
+        const container = document.getElementById("matches");
+        matches.forEach(match => {
+            const div = document.createElement("div");
+            div.classList.add("match");
+            div.innerHTML = `
+                <div class="team">
+                    <img src="${match.img1}" alt="${match.equipe1}">
+                    <strong>${match.equipe1}</strong>
+
+                     vs 
+                    <strong>${match.equipe2}</strong>
+                    <img src="${match.img2}" alt="${match.equipe2}">
+                </div>
+                <button onclick="parier('${match.equipe1}', ${match.cote1})">Parier sur ${match.equipe1} (${match.cote1})</button>
+                <button onclick="parier('${match.equipe2}', ${match.cote2})">Parier sur ${match.equipe2} (${match.cote2})</button>
+            `;
+            container.appendChild(div);
+        });
+
+        function parier(equipe, cote) {
+            alert(`Tu as parié sur ${equipe} avec une cote de ${cote} !`);
+        }
+    </script>
+</body>
+</html>
+
